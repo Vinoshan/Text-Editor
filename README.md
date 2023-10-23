@@ -45,7 +45,6 @@ To run the PWA Text Editor on your local machine, follow these steps:
 1. Clone the repository to your computer using Git:
    ```
    git clone https://github.com/Vinoshan/Text-Editor.git
-
    ```
 
 2. Navigate to the project directory:
