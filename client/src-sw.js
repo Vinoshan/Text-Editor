@@ -13,6 +13,7 @@ const pageCache = new CacheFirst({
     new CacheableResponsePlugin({
       statuses: [0, 200],
     }),
+    // Cache pages for a maximum of 30 days
     new ExpirationPlugin({
       maxAgeSeconds: 30 * 24 * 60 * 60,
     }),
@@ -26,5 +27,31 @@ warmStrategyCache({
 
 registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 
-// TODO: Implement asset caching
-registerRoute();
+// registerRoute is a function that takes two arguments: a function that returns true when the route should be used, and a strategy to use for that route.
+registerRoute(
+  ({ request }) => ['style', 'script', 'worker'].includes(request.destination),
+  new StaleWhileRevalidate({
+    cacheName: 'asset-cache',
+    plugins: [
+      //Cache only 200 responses
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
+    ],
+  })
+);
+
+// offlineFallback(
+//   {
+//     pageFallback: '/index.html',
+//   },
+//   [
+//     '/',
+//     '/index.html',
+//     '/src/css/style.css',
+//     '/src/js/index.js',
+//     '/src/js/install.js',
+//     '/src/images/logo.png',
+//     '/src-sw.js',
+//   ]
+// );
