@@ -13,6 +13,7 @@ The Text Editor is a modern web application that allows users to create and edit
   - [Installation](#installation)
   - [Usage](#usage)
   - [Technologies Used](#technologies-used)
+  - [Deployment](#deployment)
   - [Contributing](#contributing)
   - [License](#license)
   - [Contact](#contact)
@@ -81,6 +82,9 @@ To run the PWA Text Editor on your local machine, follow these steps:
 - Babel
 - Express.js (for server)
 - Heroku (for deployment)
+
+## Deployment
+You can access the deployed app on Heroku: [J.A.T.E](https://j-a-t-e-texteditor-432342f95c11.herokuapp.com/)
 
 ## Contributing
 
